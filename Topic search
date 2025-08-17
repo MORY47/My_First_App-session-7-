@@ -1,0 +1,41 @@
+/*Stateless vs stateful Widget
+
+Stateless Widget:
+Immutable – once built, it doesn’t change , Used for static UI that doesn’t depend on dynamic data or user interaction.  
+Examples: Text, Icon, Container.
+*/ 
+class MyStatelessWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text("Hello, World!");
+  }
+}
+/*Stateful Widget:
+Mutable – it maintains a state that can change over time , When state changes, the widget rebuilds itself.
+Examples: Checkbox, TextField, Slider
+*/ 
+class MyStatefulWidget extends StatefulWidget {
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("Counter: $counter"),
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              counter++;
+            });
+          },
+          child: Text("Increment"),
+        ),
+      ],
+    );
+  }
+}
